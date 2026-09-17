@@ -3,9 +3,7 @@
 ## Werksessie 1
 
 - Datum:
-01-sep-2026
-- Starttijd: 
-15:00
+- Starttijd:
 - Eindtijd:
 - Bestede tijd:
 - Wat heb ik gedaan?
@@ -18,12 +16,10 @@ Lokale repository gekoppeld aan GitHub.
 Eerste commit gepusht.
 Nederlands woordenboek aan VS Code toegevoegd.
 
-
 - Wat heb ik geleerd?
 
 - Welke beslissingen heb ik genomen?
-- Welke bronnen of hulpmiddelen heb ik gebruikt? 
-Powerpoint les 1,2,3 en ChatGPT
+- Welke bronnen of hulpmiddelen heb ik gebruikt?
 - Wat wordt mijn volgende stap?
 
 ## AI-gebruik
@@ -31,6 +27,6 @@ Powerpoint les 1,2,3 en ChatGPT
 - Gebruikte tool: 
 ChatGPT
 - Waarvoor gebruikt:
-uitleg, planning en controle van Git stappen.structureren van vier scenario’s,terminal/git controleren.
+uitleg, planning en controle van Git stappen.
 - Wat heb ik zelf gecontroleerd of uitgevoerd?
-commando’s ingevoerd, GitHub repository gemaakt, resultaten gecontroleerd via terminal en proceslogboek geschreven. 4 gebruikersscenario's geschreven. Scenario’s gekoppeld aan de requirements.
+commando’s ingevoerd, GitHub-repository gemaakt, resultaten gecontroleerd en proceslogboek geschreven
