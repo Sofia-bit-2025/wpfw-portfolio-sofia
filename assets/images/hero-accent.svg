@@ -1,0 +1,15 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 240 60"
+  width="240"
+  height="60"
+  aria-hidden="true"
+  focusable="false"
+>
+  <g fill="none" stroke="#0b5cad" stroke-width="4" stroke-linecap="round">
+    <path d="M4 30h44" />
+    <path d="M64 30h28" opacity="0.7" />
+    <path d="M108 30h16" opacity="0.5" />
+    <path d="M140 30h8" opacity="0.35" />
+  </g>
+</svg>

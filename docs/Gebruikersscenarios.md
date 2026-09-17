@@ -237,3 +237,4 @@ De gebruiker wil zelfstandig de introductie, projecten en blogitems kunnen bekij
 
 De gebruiker kan zonder muis alle drie de pagina’s bereiken, altijd zien welk element focus heeft en de inhoud bij 200% zoom blijven lezen.
 
+
