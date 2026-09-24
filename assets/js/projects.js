@@ -195,4 +195,11 @@ const updateProjectsStatus = (statusElement, numberOfProjects, searchTerm) => {
       : `${numberOfProjects} projecten gevonden.`;
 };
 
+const updateProjects = (searchTerm, projectsListElement, statusElement) => {
+  const visibleProjects = filterProjects(projects, searchTerm);
+
+  renderProjects(visibleProjects, projectsListElement);
+
+  updateProjectsStatus(statusElement, visibleProjects.length, searchTerm);
+};
 
