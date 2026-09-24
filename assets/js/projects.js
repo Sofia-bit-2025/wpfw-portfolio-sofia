@@ -26,3 +26,17 @@ const projects = [
 const normalizeText = (value) => {
   return value.trim().toLocaleLowerCase("nl-NL");
 };
+
+const projectMatchesSearch = (project, searchTerm) => {
+  const normalizedSearchTerm = normalizeText(searchTerm);
+
+  if (normalizedSearchTerm === "") {
+    return true;
+  }
+
+  const searchableContent = normalizeText(
+    [project.title, project.description, ...project.technologies].join(" "),
+  );
+
+  return searchableContent.includes(normalizedSearchTerm);
+};
