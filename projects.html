@@ -10,14 +10,15 @@
       name="description"
       content="Het huidige softwareproject van Sofia met gebruikte technieken en technische details."
     />
+
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="assets/css/style.css" />
+
+    <script src="assets/js/projects.js" defer></script>
   </head>
 
   <body>
-    <a class="skip-link" href="#main-content">
-      Ga naar hoofdinhoud
-    </a>
+    <a class="skip-link" href="#main-content">Ga naar hoofdinhoud</a>
 
     <header class="site-header">
       <div class="container site-header__inner">
@@ -27,12 +28,18 @@
 
         <nav aria-label="Hoofdnavigatie">
           <ul class="nav-list">
-            <li><a href="index.html">Home</a></li>
+            <li>
+              <a href="index.html">Home</a>
+            </li>
             <li>
               <a href="projects.html" aria-current="page">Projecten</a>
             </li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li>
+              <a href="blog.html">Blog</a>
+            </li>
+            <li>
+              <a href="contact.html">Contact</a>
+            </li>
           </ul>
         </nav>
       </div>
@@ -50,11 +57,9 @@
         </div>
       </section>
 
-            <section class="section" aria-labelledby="project-title">
+      <section class="section" aria-labelledby="project-title">
         <div class="container">
-          <h2 id="project-title">
-            Huidig project
-          </h2>
+          <h2 id="project-title">Huidig project</h2>
 
           <p class="section__intro">
             Het project wordt vanuit JavaScript-data opgebouwd. Je kunt zoeken
@@ -63,9 +68,7 @@
 
           <div class="projects-controls">
             <div class="projects-search">
-              <label for="project-search">
-                Zoek project
-              </label>
+              <label for="project-search">Zoek project</label>
 
               <input
                 class="form__input"
@@ -78,11 +81,7 @@
             </div>
           </div>
 
-          <p
-            id="projects-status"
-            class="note"
-            role="status"
-          ></p>
+          <p id="projects-status" class="note" role="status"></p>
 
           <ul
             id="projects-list"
@@ -97,15 +96,11 @@
           </noscript>
         </div>
       </section>
-
-
     </main>
 
     <footer class="site-footer">
       <div class="container site-footer__inner">
-        <p class="site-footer__text">
-          Sofia — Software Engineering
-        </p>
+        <p class="site-footer__text">Sofia — Software Engineering</p>
       </div>
     </footer>
   </body>
