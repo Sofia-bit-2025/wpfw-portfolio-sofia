@@ -50,24 +50,55 @@
         </div>
       </section>
 
-      <section class="section" aria-labelledby="development-title">
+            <section class="section" aria-labelledby="project-title">
         <div class="container">
-          <h2 id="development-title">Projecten in voorbereiding</h2>
+          <h2 id="project-title">
+            Huidig project
+          </h2>
 
-          <div class="prose">
-            <p>
-              Op dit moment staan er nog geen zelfstandige projecten op deze
-              pagina.
-            </p>
+          <p class="section__intro">
+            Het project wordt vanuit JavaScript-data opgebouwd. Je kunt zoeken
+            op titel, beschrijving of techniek en de technische details bekijken.
+          </p>
 
-            <p>
-              Deze pagina wordt aangevuld met projectbeschrijvingen, gebruikte
-              technieken, broncode en demonstraties zodra de projecten
-              beschikbaar zijn.
-            </p>
+          <div class="projects-controls">
+            <div class="projects-search">
+              <label for="project-search">
+                Zoek project
+              </label>
+
+              <input
+                class="form__input"
+                type="search"
+                id="project-search"
+                placeholder="Bijvoorbeeld JavaScript"
+                autocomplete="off"
+                aria-controls="projects-list"
+              />
+            </div>
           </div>
+
+          <p
+            id="projects-status"
+            class="note"
+            role="status"
+          ></p>
+
+          <ul
+            id="projects-list"
+            class="card-grid"
+            aria-label="Softwareprojecten"
+          ></ul>
+
+          <noscript>
+            <p class="note">
+              JavaScript is nodig om de projecten te tonen.
+            </p>
+          </noscript>
         </div>
       </section>
+
+
     </main>
 
     <footer class="site-footer">
