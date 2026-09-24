@@ -171,3 +171,28 @@ const renderProjects = (projectList, projectsListElement) => {
   }
 };
 
+const updateProjectsStatus = (statusElement, numberOfProjects, searchTerm) => {
+  const isSearching = normalizeText(searchTerm) !== "";
+
+  if (numberOfProjects === 0) {
+    statusElement.textContent = `Geen projecten gevonden voor "${searchTerm.trim()}".`;
+
+    return;
+  }
+
+  if (!isSearching) {
+    statusElement.textContent =
+      numberOfProjects === 1
+        ? "1 project weergegeven."
+        : `${numberOfProjects} projecten weergegeven.`;
+
+    return;
+  }
+
+  statusElement.textContent =
+    numberOfProjects === 1
+      ? "1 project gevonden."
+      : `${numberOfProjects} projecten gevonden.`;
+};
+
+
