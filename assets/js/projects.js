@@ -118,3 +118,47 @@ const createProjectDetails = (project) => {
 
   return wrapper;
 };
+
+const createProjectCard = (project) => {
+  const listItem = document.createElement("li");
+
+  const article = document.createElement("article");
+
+  article.className = "card";
+
+  const status = document.createElement("p");
+
+  status.className = "status";
+  status.textContent = project.status;
+
+  const title = document.createElement("h3");
+
+  title.textContent = project.title;
+
+  const description = document.createElement("p");
+
+  description.textContent = project.description;
+
+  const technologies = createTechnologyList(project);
+
+  const details = createProjectDetails(project);
+
+  const repositoryLink = document.createElement("a");
+
+  repositoryLink.className = "card__link card__link--primary";
+  repositoryLink.href = project.repositoryUrl;
+  repositoryLink.textContent = "Bekijk broncode op GitHub";
+
+  article.append(
+    status,
+    title,
+    description,
+    technologies,
+    details,
+    repositoryLink,
+  );
+
+  listItem.appendChild(article);
+
+  return listItem;
+};
