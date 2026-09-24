@@ -46,3 +46,22 @@ const filterProjects = (projectList, searchTerm) => {
     projectMatchesSearch(project, searchTerm),
   );
 };
+
+const createTechnologyList = (project) => {
+  const list = document.createElement("ul");
+
+  list.className = "tag-list";
+
+  list.setAttribute("aria-label", `Gebruikte technieken voor ${project.title}`);
+
+  for (const technology of project.technologies) {
+    const item = document.createElement("li");
+
+    item.className = "tag";
+    item.textContent = technology;
+
+    list.appendChild(item);
+  }
+
+  return list;
+};
