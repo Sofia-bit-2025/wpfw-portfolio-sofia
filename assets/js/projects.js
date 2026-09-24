@@ -65,3 +65,56 @@ const createTechnologyList = (project) => {
 
   return list;
 };
+
+const createProjectDetails = (project) => {
+  const detailsId = `project-details-${project.id}`;
+
+  const wrapper = document.createElement("div");
+
+  const button = document.createElement("button");
+
+  button.type = "button";
+  button.className = "card__link";
+  button.textContent = "Toon technische details";
+
+  button.setAttribute("aria-expanded", "false");
+  button.setAttribute("aria-controls", detailsId);
+
+  const details = document.createElement("div");
+
+  details.className = "project-details";
+  details.id = detailsId;
+  details.hidden = true;
+
+  const title = document.createElement("h4");
+
+  title.textContent = "Technische details";
+
+  const list = document.createElement("ul");
+
+  for (const detail of project.details) {
+    const item = document.createElement("li");
+
+    item.textContent = detail;
+
+    list.appendChild(item);
+  }
+
+  details.append(title, list);
+
+  button.addEventListener("click", () => {
+    const isExpanded = button.getAttribute("aria-expanded") === "true";
+
+    button.setAttribute("aria-expanded", String(!isExpanded));
+
+    details.hidden = isExpanded;
+
+    button.textContent = isExpanded
+      ? "Toon technische details"
+      : "Verberg technische details";
+  });
+
+  wrapper.append(button, details);
+
+  return wrapper;
+};
