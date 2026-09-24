@@ -162,3 +162,12 @@ const createProjectCard = (project) => {
 
   return listItem;
 };
+
+const renderProjects = (projectList, projectsListElement) => {
+  projectsListElement.replaceChildren();
+
+  for (const project of projectList) {
+    projectsListElement.appendChild(createProjectCard(project));
+  }
+};
+
