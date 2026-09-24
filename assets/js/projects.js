@@ -40,3 +40,9 @@ const projectMatchesSearch = (project, searchTerm) => {
 
   return searchableContent.includes(normalizedSearchTerm);
 };
+
+const filterProjects = (projectList, searchTerm) => {
+  return projectList.filter((project) =>
+    projectMatchesSearch(project, searchTerm),
+  );
+};
