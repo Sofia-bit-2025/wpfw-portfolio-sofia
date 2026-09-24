@@ -22,3 +22,7 @@ const projects = [
     ],
   },
 ];
+
+const normalizeText = (value) => {
+  return value.trim().toLocaleLowerCase("nl-NL");
+};
