@@ -49,14 +49,11 @@ const filterProjects = (projectList, searchTerm) => {
 
 const createTechnologyList = (project) => {
   const list = document.createElement("ul");
-
   list.className = "tag-list";
-
   list.setAttribute("aria-label", `Gebruikte technieken voor ${project.title}`);
 
   for (const technology of project.technologies) {
     const item = document.createElement("li");
-
     item.className = "tag";
     item.textContent = technology;
 
@@ -70,31 +67,26 @@ const createProjectDetails = (project) => {
   const detailsId = `project-details-${project.id}`;
 
   const wrapper = document.createElement("div");
-
   const button = document.createElement("button");
 
   button.type = "button";
   button.className = "card__link";
   button.textContent = "Toon technische details";
-
   button.setAttribute("aria-expanded", "false");
   button.setAttribute("aria-controls", detailsId);
 
   const details = document.createElement("div");
-
   details.className = "project-details";
   details.id = detailsId;
   details.hidden = true;
 
   const title = document.createElement("h4");
-
   title.textContent = "Technische details";
 
   const list = document.createElement("ul");
 
   for (const detail of project.details) {
     const item = document.createElement("li");
-
     item.textContent = detail;
 
     list.appendChild(item);
@@ -106,7 +98,6 @@ const createProjectDetails = (project) => {
     const isExpanded = button.getAttribute("aria-expanded") === "true";
 
     button.setAttribute("aria-expanded", String(!isExpanded));
-
     details.hidden = isExpanded;
 
     button.textContent = isExpanded
@@ -123,28 +114,22 @@ const createProjectCard = (project) => {
   const listItem = document.createElement("li");
 
   const article = document.createElement("article");
-
   article.className = "card";
 
   const status = document.createElement("p");
-
   status.className = "status";
   status.textContent = project.status;
 
   const title = document.createElement("h3");
-
   title.textContent = project.title;
 
   const description = document.createElement("p");
-
   description.textContent = project.description;
 
   const technologies = createTechnologyList(project);
-
   const details = createProjectDetails(project);
 
   const repositoryLink = document.createElement("a");
-
   repositoryLink.className = "card__link card__link--primary";
   repositoryLink.href = project.repositoryUrl;
   repositoryLink.textContent = "Bekijk broncode op GitHub";
@@ -176,7 +161,6 @@ const updateProjectsStatus = (statusElement, numberOfProjects, searchTerm) => {
 
   if (numberOfProjects === 0) {
     statusElement.textContent = `Geen projecten gevonden voor "${searchTerm.trim()}".`;
-
     return;
   }
 
@@ -199,7 +183,23 @@ const updateProjects = (searchTerm, projectsListElement, statusElement) => {
   const visibleProjects = filterProjects(projects, searchTerm);
 
   renderProjects(visibleProjects, projectsListElement);
-
   updateProjectsStatus(statusElement, visibleProjects.length, searchTerm);
 };
 
+const initProjectsPage = () => {
+  const searchInput = document.querySelector("#project-search");
+  const projectsListElement = document.querySelector("#projects-list");
+  const statusElement = document.querySelector("#projects-status");
+
+  if (!searchInput || !projectsListElement || !statusElement) {
+    return;
+  }
+
+  searchInput.addEventListener("input", () => {
+    updateProjects(searchInput.value, projectsListElement, statusElement);
+  });
+
+  updateProjects(searchInput.value, projectsListElement, statusElement);
+};
+
+initProjectsPage();
