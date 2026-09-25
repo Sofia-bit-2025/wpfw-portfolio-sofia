@@ -10,8 +10,10 @@
       name="description"
       content="Contactgegevens en contactformulier van Sofia, student Software Engineering."
     />
+
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="assets/css/style.css" />
+
     <script src="assets/js/contact.js" defer></script>
   </head>
 
@@ -28,9 +30,18 @@
 
         <nav aria-label="Hoofdnavigatie">
           <ul class="nav-list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="projects.html">Projecten</a></li>
-            <li><a href="blog.html">Blog</a></li>
+            <li>
+              <a href="index.html">Home</a>
+            </li>
+
+            <li>
+              <a href="projects.html">Projecten</a>
+            </li>
+
+            <li>
+              <a href="blog.html">Blog</a>
+            </li>
+
             <li>
               <a href="contact.html" aria-current="page">
                 Contact
@@ -42,12 +53,9 @@
     </header>
 
     <main id="main-content">
-          
       <section class="page-intro" aria-labelledby="contact-title">
         <div class="container">
-          <h1 id="contact-title">
-            Contact
-          </h1>
+          <h1 id="contact-title">Contact</h1>
 
           <p class="lead">
             Voor stages, projecten of andere professionele mogelijkheden.
@@ -57,15 +65,11 @@
 
       <section class="section" aria-labelledby="contact-details-title">
         <div class="container">
-          <h2 id="contact-details-title">
-            Contactgegevens
-          </h2>
+          <h2 id="contact-details-title">Contactgegevens</h2>
 
           <dl class="contact-list">
             <div class="contact-list__item">
-              <dt>
-                E-mail
-              </dt>
+              <dt>E-mail</dt>
 
               <dd>
                 <a href="mailto:sqahaei@gmail.com">
@@ -74,24 +78,20 @@
               </dd>
             </div>
 
-          <div class="contact-list__item">
-            <dt>
-            LinkedIn
-            </dt>
+            <div class="contact-list__item">
+              <dt>LinkedIn</dt>
 
-          <dd>
-            <a
-             href="https://www.linkedin.com/in/shahrzad-nezamabadi-94b477238"
-            >
-             LinkedIn-profiel
-            </a>
-          </dd>
-        </div>
+              <dd>
+                <a
+                  href="https://www.linkedin.com/in/shahrzad-nezamabadi-94b477238"
+                >
+                  LinkedIn-profiel
+                </a>
+              </dd>
+            </div>
 
             <div class="contact-list__item">
-              <dt>
-                GitHub
-              </dt>
+              <dt>GitHub</dt>
 
               <dd>
                 <a href="https://github.com/Sofia-bit-2025">
@@ -99,11 +99,117 @@
                 </a>
               </dd>
             </div>
-
           </dl>
         </div>
       </section>
 
+      <section
+        class="section section--muted"
+        aria-labelledby="contact-form-title"
+      >
+        <div class="container">
+          <h2 id="contact-form-title">Contactformulier</h2>
+
+          <p
+            id="contact-form-description"
+            class="section__intro"
+          >
+            Het formulier controleert je invoer. De gegevens worden nog niet
+            verzonden.
+          </p>
+
+          <form
+            id="contact-form"
+            class="form"
+            aria-describedby="contact-form-description"
+            novalidate
+          >
+            <div class="form__field">
+              <label class="form__label" for="contact-name">
+                Naam
+              </label>
+
+              <input
+                class="form__input"
+                id="contact-name"
+                name="name"
+                type="text"
+                autocomplete="name"
+                required
+                minlength="2"
+                aria-describedby="contact-name-error"
+                aria-invalid="false"
+              />
+
+              <p
+                id="contact-name-error"
+                class="form__error"
+              ></p>
+            </div>
+
+            <div class="form__field">
+              <label class="form__label" for="contact-email">
+                E-mail
+              </label>
+
+              <input
+                class="form__input"
+                id="contact-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                aria-describedby="contact-email-error"
+                aria-invalid="false"
+              />
+
+              <p
+                id="contact-email-error"
+                class="form__error"
+              ></p>
+            </div>
+
+            <div class="form__field">
+              <label class="form__label" for="contact-message">
+                Bericht
+              </label>
+
+              <textarea
+                class="form__input"
+                id="contact-message"
+                name="message"
+                rows="6"
+                required
+                minlength="10"
+                aria-describedby="contact-message-error"
+                aria-invalid="false"
+              ></textarea>
+
+              <p
+                id="contact-message-error"
+                class="form__error"
+              ></p>
+            </div>
+
+            <button class="form__button" type="submit">
+              Controleer invoer
+            </button>
+
+            <p
+              id="form-status"
+              class="form__status"
+              role="status"
+            ></p>
+          </form>
+
+          <noscript>
+            <p class="note">
+              JavaScript is nodig om het formulier te controleren.
+              Neem anders rechtstreeks contact op via e-mail.
+            </p>
+          </noscript>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
