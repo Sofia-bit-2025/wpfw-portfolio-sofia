@@ -39,3 +39,26 @@ const getErrorMessage = (field) => {
 
   return "";
 };
+
+const validateField = (field) => {
+  const errorMessage =
+    getErrorMessage(field);
+
+  const errorElement =
+    getErrorElement(field);
+
+  const isValid =
+    errorMessage === "";
+
+  field.setAttribute(
+    "aria-invalid",
+    String(!isValid),
+  );
+
+  if (errorElement) {
+    errorElement.textContent =
+      errorMessage;
+  }
+
+  return isValid;
+};
