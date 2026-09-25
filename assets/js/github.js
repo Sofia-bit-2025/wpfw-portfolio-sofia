@@ -14,3 +14,13 @@ const GITHUB_API_URL =
     year: "numeric",
   }).format(date);
 };
+
+const isValidRepository = (repository) => {
+  return (
+    repository &&
+    typeof repository === "object" &&
+    typeof repository.name === "string" &&
+    typeof repository.html_url === "string" &&
+    typeof repository.updated_at === "string"
+  );
+};
