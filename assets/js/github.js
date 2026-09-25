@@ -104,3 +104,17 @@ const renderRepository = (
     createRepositoryCard(repository),
   );
 };
+
+const setApiStatus = (
+  statusElement,
+  message,
+  isError = false,
+) => {
+  statusElement.textContent = message;
+  statusElement.hidden = message === "";
+
+  statusElement.classList.toggle(
+    "api-status--error",
+    isError,
+  );
+};
