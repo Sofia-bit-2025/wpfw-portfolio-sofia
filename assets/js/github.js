@@ -1,7 +1,7 @@
 const GITHUB_API_URL =
   "https://api.github.com/repos/Sofia-bit-2025/wpfw-portfolio-sofia";
 
-  const formatDate = (dateString) => {
+const formatDate = (dateString) => {
   const date = new Date(dateString);
 
   if (Number.isNaN(date.getTime())) {
@@ -118,3 +118,53 @@ const setApiStatus = (
     isError,
   );
 };
+
+const initGitHubRepository = async () => {
+  const statusElement =
+    document.querySelector("#github-status");
+
+  const repositoryListElement =
+    document.querySelector("#github-repositories");
+
+  if (
+    !statusElement ||
+    !repositoryListElement
+  ) {
+    return;
+  }
+
+  setApiStatus(
+    statusElement,
+    "Repository laden...",
+  );
+
+  try {
+    const repository =
+      await fetchRepository();
+
+    renderRepository(
+      repositoryListElement,
+      repository,
+    );
+
+    setApiStatus(
+      statusElement,
+      "",
+    );
+  } catch (error) {
+    repositoryListElement.replaceChildren();
+
+    setApiStatus(
+      statusElement,
+      "De repositorygegevens konden niet worden geladen. Probeer het later opnieuw.",
+      true,
+    );
+
+    console.error(
+      "GitHub repository laden mislukt:",
+      error,
+    );
+  }
+};
+
+initGitHubRepository();
