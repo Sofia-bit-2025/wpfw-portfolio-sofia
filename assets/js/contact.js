@@ -62,3 +62,21 @@ const validateField = (field) => {
 
   return isValid;
 };
+
+const validateForm = (fields) => {
+  let firstInvalidField = null;
+
+  for (const field of fields) {
+    const isValid =
+      validateField(field);
+
+    if (
+      !isValid &&
+      !firstInvalidField
+    ) {
+      firstInvalidField = field;
+    }
+  }
+
+  return firstInvalidField;
+};
