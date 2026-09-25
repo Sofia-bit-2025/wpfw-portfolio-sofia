@@ -12,3 +12,30 @@ const getErrorElement = (field) => {
     ? document.getElementById(errorId)
     : null;
 };
+
+const getErrorMessage = (field) => {
+  const value = field.value.trim();
+
+  if (field.required && value === "") {
+    return (
+      REQUIRED_MESSAGES[field.name] ??
+      "Dit veld is verplicht."
+    );
+  }
+
+  if (
+    field.type === "email" &&
+    field.validity.typeMismatch
+  ) {
+    return "Vul een geldig e-mailadres in.";
+  }
+
+  if (
+    field.minLength > 0 &&
+    value.length < field.minLength
+  ) {
+    return `Gebruik minimaal ${field.minLength} tekens.`;
+  }
+
+  return "";
+};
