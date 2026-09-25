@@ -95,3 +95,12 @@ const createRepositoryCard = (repository) => {
 
   return listItem;
 };
+
+const renderRepository = (
+  repositoryListElement,
+  repository,
+) => {
+  repositoryListElement.replaceChildren(
+    createRepositoryCard(repository),
+  );
+};
