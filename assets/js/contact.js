@@ -122,3 +122,31 @@ const handleFieldInput = (
     validateField(field);
   }
 };
+
+const handleSubmit = (
+  event,
+  fields,
+  statusElement,
+) => {
+  event.preventDefault();
+
+  const firstInvalidField =
+    validateForm(fields);
+
+  if (firstInvalidField) {
+    setFormStatus(
+      statusElement,
+      "Controleer de gemarkeerde velden.",
+      "error",
+    );
+
+    firstInvalidField.focus();
+    return;
+  }
+
+  setFormStatus(
+    statusElement,
+    "Je invoer is geldig. De gegevens zijn niet verzonden.",
+    "success",
+  );
+};
