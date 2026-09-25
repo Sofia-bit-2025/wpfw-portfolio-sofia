@@ -24,3 +24,19 @@ const isValidRepository = (repository) => {
     typeof repository.updated_at === "string"
   );
 };
+
+const fetchRepository = async () => {
+  const response = await fetch(GITHUB_API_URL);
+
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}`);
+  }
+
+  const repository = await response.json();
+
+  if (!isValidRepository(repository)) {
+    throw new Error("Onverwachte GitHub API-response.");
+  }
+
+  return repository;
+};
