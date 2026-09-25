@@ -80,3 +80,22 @@ const validateForm = (fields) => {
 
   return firstInvalidField;
 };
+
+const setFormStatus = (
+  statusElement,
+  message,
+  type = null,
+) => {
+  statusElement.textContent = message;
+
+  statusElement.classList.remove(
+    "form__status--success",
+    "form__status--error",
+  );
+
+  if (type) {
+    statusElement.classList.add(
+      `form__status--${type}`,
+    );
+  }
+};
