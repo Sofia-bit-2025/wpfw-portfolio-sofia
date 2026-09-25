@@ -105,3 +105,20 @@ const handleFieldBlur = (event) => {
 
   validateField(field);
 };
+
+const handleFieldInput = (
+  event,
+  statusElement,
+) => {
+  const field = event.currentTarget;
+
+  setFormStatus(statusElement, "");
+
+  const wasInvalid =
+    field.getAttribute("aria-invalid") ===
+    "true";
+
+  if (wasInvalid) {
+    validateField(field);
+  }
+};
