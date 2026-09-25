@@ -99,3 +99,9 @@ const setFormStatus = (
     );
   }
 };
+
+const handleFieldBlur = (event) => {
+  const field = event.currentTarget;
+
+  validateField(field);
+};
