@@ -150,3 +150,52 @@ const handleSubmit = (
     "success",
   );
 };
+
+const initContactForm = () => {
+  const form =
+    document.querySelector(
+      "#contact-form",
+    );
+
+  const statusElement =
+    document.querySelector(
+      "#form-status",
+    );
+
+  if (!form || !statusElement) {
+    return;
+  }
+
+  const requiredFields =
+    form.querySelectorAll("[required]");
+
+  for (const field of requiredFields) {
+    field.addEventListener(
+      "blur",
+      handleFieldBlur,
+    );
+
+    field.addEventListener(
+      "input",
+      (event) => {
+        handleFieldInput(
+          event,
+          statusElement,
+        );
+      },
+    );
+  }
+
+  form.addEventListener(
+    "submit",
+    (event) => {
+      handleSubmit(
+        event,
+        requiredFields,
+        statusElement,
+      );
+    },
+  );
+};
+
+initContactForm();
