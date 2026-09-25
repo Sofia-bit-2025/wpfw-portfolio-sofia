@@ -40,3 +40,58 @@ const fetchRepository = async () => {
 
   return repository;
 };
+
+const createRepositoryCard = (repository) => {
+  const listItem = document.createElement("li");
+
+  const article = document.createElement("article");
+  article.className = "card";
+
+  const title = document.createElement("h3");
+
+  const link = document.createElement("a");
+  link.href = repository.html_url;
+  link.textContent = repository.name;
+
+  title.appendChild(link);
+
+  const description = document.createElement("p");
+  description.textContent =
+    repository.description ||
+    "Geen beschrijving beschikbaar.";
+
+  const information = document.createElement("ul");
+  information.className = "tag-list";
+
+  information.setAttribute(
+    "aria-label",
+    `Repositoryinformatie voor ${repository.name}`,
+  );
+
+  if (repository.language) {
+    const language = document.createElement("li");
+
+    language.className = "tag";
+    language.textContent = repository.language;
+
+    information.appendChild(language);
+  }
+
+  const updated = document.createElement("li");
+
+  updated.className = "tag";
+  updated.textContent =
+    `Bijgewerkt ${formatDate(repository.updated_at)}`;
+
+  information.appendChild(updated);
+
+  article.append(
+    title,
+    description,
+    information,
+  );
+
+  listItem.appendChild(article);
+
+  return listItem;
+};
