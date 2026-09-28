@@ -48,10 +48,7 @@ const projects = [
     title: "Database Assignments",
     description:
       "Database-opdrachten uit mijn opleiding met focus op databaseontwerp en SQL.",
-    technologies: [
-      "SQL",
-      "Databaseontwerp",
-    ],
+    technologies: ["SQL", "Databaseontwerp"],
     status: "In ontwikkeling",
     repositoryUrl:
       "https://github.com/Sofia-bit-2025/database-assignments",
@@ -89,11 +86,16 @@ const filterProjects = (projectList, searchTerm) => {
 
 const createTechnologyList = (project) => {
   const list = document.createElement("ul");
+
   list.className = "tag-list";
-  list.setAttribute("aria-label", `Gebruikte technieken voor ${project.title}`);
+  list.setAttribute(
+    "aria-label",
+    `Gebruikte technieken voor ${project.title}`,
+  );
 
   for (const technology of project.technologies) {
     const item = document.createElement("li");
+
     item.className = "tag";
     item.textContent = technology;
 
@@ -107,6 +109,8 @@ const createProjectDetails = (project) => {
   const detailsId = `project-details-${project.id}`;
 
   const wrapper = document.createElement("div");
+  wrapper.className = "project-details-wrapper";
+
   const button = document.createElement("button");
 
   button.type = "button";
@@ -116,6 +120,7 @@ const createProjectDetails = (project) => {
   button.setAttribute("aria-controls", detailsId);
 
   const details = document.createElement("div");
+
   details.className = "project-details";
   details.id = detailsId;
   details.hidden = true;
@@ -127,8 +132,8 @@ const createProjectDetails = (project) => {
 
   for (const detail of project.details) {
     const item = document.createElement("li");
-    item.textContent = detail;
 
+    item.textContent = detail;
     list.appendChild(item);
   }
 
@@ -150,6 +155,23 @@ const createProjectDetails = (project) => {
   return wrapper;
 };
 
+const createProjectActions = (project) => {
+  const actions = document.createElement("div");
+  actions.className = "card__actions";
+
+  const details = createProjectDetails(project);
+
+  const repositoryLink = document.createElement("a");
+
+  repositoryLink.className = "card__link card__link--primary";
+  repositoryLink.href = project.repositoryUrl;
+  repositoryLink.textContent = "Bekijk broncode op GitHub";
+
+  actions.append(details, repositoryLink);
+
+  return actions;
+};
+
 const createProjectCard = (project) => {
   const listItem = document.createElement("li");
 
@@ -167,20 +189,14 @@ const createProjectCard = (project) => {
   description.textContent = project.description;
 
   const technologies = createTechnologyList(project);
-  const details = createProjectDetails(project);
-
-  const repositoryLink = document.createElement("a");
-  repositoryLink.className = "card__link card__link--primary";
-  repositoryLink.href = project.repositoryUrl;
-  repositoryLink.textContent = "Bekijk broncode op GitHub";
+  const actions = createProjectActions(project);
 
   article.append(
     status,
     title,
     description,
     technologies,
-    details,
-    repositoryLink,
+    actions,
   );
 
   listItem.appendChild(article);
@@ -196,11 +212,16 @@ const renderProjects = (projectList, projectsListElement) => {
   }
 };
 
-const updateProjectsStatus = (statusElement, numberOfProjects, searchTerm) => {
+const updateProjectsStatus = (
+  statusElement,
+  numberOfProjects,
+  searchTerm,
+) => {
   const isSearching = normalizeText(searchTerm) !== "";
 
   if (numberOfProjects === 0) {
-    statusElement.textContent = `Geen projecten gevonden voor "${searchTerm.trim()}".`;
+    statusElement.textContent =
+      `Geen projecten gevonden voor "${searchTerm.trim()}".`;
     return;
   }
 
@@ -219,11 +240,19 @@ const updateProjectsStatus = (statusElement, numberOfProjects, searchTerm) => {
       : `${numberOfProjects} projecten gevonden.`;
 };
 
-const updateProjects = (searchTerm, projectsListElement, statusElement) => {
+const updateProjects = (
+  searchTerm,
+  projectsListElement,
+  statusElement,
+) => {
   const visibleProjects = filterProjects(projects, searchTerm);
 
   renderProjects(visibleProjects, projectsListElement);
-  updateProjectsStatus(statusElement, visibleProjects.length, searchTerm);
+  updateProjectsStatus(
+    statusElement,
+    visibleProjects.length,
+    searchTerm,
+  );
 };
 
 const initProjectsPage = () => {
@@ -236,10 +265,18 @@ const initProjectsPage = () => {
   }
 
   searchInput.addEventListener("input", () => {
-    updateProjects(searchInput.value, projectsListElement, statusElement);
+    updateProjects(
+      searchInput.value,
+      projectsListElement,
+      statusElement,
+    );
   });
 
-  updateProjects(searchInput.value, projectsListElement, statusElement);
+  updateProjects(
+    searchInput.value,
+    projectsListElement,
+    statusElement,
+  );
 };
 
 initProjectsPage();
