@@ -49,26 +49,19 @@
     </header>
 
     <main id="main-content">
-      <section class="page-intro" aria-labelledby="projects-title">
+      <section
+        class="section projects-page"
+        aria-labelledby="projects-title"
+      >
         <div class="container">
-          <h1 id="projects-title">Projecten</h1>
+          <header class="projects-page__header">
+            <h1 id="projects-title">Projecten</h1>
 
-          <p class="lead">
-            Hier laat ik softwareprojecten zien waar ik tijdens mijn opleiding
-            aan werk, met gebruikte technieken en technische details.
-          </p>
-        </div>
-      </section>
-
-      <section class="section" aria-labelledby="project-list-title">
-        <div class="container">
-          <h2 id="project-list-title">Mijn projecten</h2>
-
-          <p class="section__intro">
-            De projecten worden vanuit JavaScript-data opgebouwd. Je kunt zoeken
-            op titel, beschrijving of techniek en per project de technische
-            details bekijken.
-          </p>
+            <p class="lead">
+              Hier laat ik softwareprojecten zien waar ik tijdens mijn opleiding
+              aan werk, met gebruikte technieken en technische details.
+            </p>
+          </header>
 
           <div class="projects-controls">
             <div class="projects-search">
@@ -85,7 +78,11 @@
             </div>
           </div>
 
-          <p id="projects-status" class="note" role="status"></p>
+          <p
+            id="projects-status"
+            class="note projects-status"
+            role="status"
+          ></p>
 
           <ul
             id="projects-list"
