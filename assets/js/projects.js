@@ -13,12 +13,52 @@ const projects = [
       "Toegankelijkheid",
     ],
     status: "In ontwikkeling",
-    repositoryUrl: "https://github.com/Sofia-bit-2025/wpfw-portfolio-sofia",
+    repositoryUrl:
+      "https://github.com/Sofia-bit-2025/wpfw-portfolio-sofia",
     details: [
       "Projectgegevens worden vanuit JavaScript naar de DOM gerenderd.",
       "Het project kan worden gezocht op titel, beschrijving en techniek.",
       "Het contactformulier bevat client-side validatie en toegankelijke feedback.",
       "GitHub-data wordt via de Fetch API opgehaald en dynamisch weergegeven.",
+    ],
+  },
+  {
+    id: 2,
+    title: "Smart Environment Dashboard",
+    description:
+      "Softwareproject voor het verzamelen, verwerken en weergeven van omgevingsdata.",
+    technologies: [
+      "C#",
+      "ASP.NET Core",
+      "JavaScript",
+      "SQL",
+      "REST API",
+    ],
+    status: "In ontwikkeling",
+    repositoryUrl:
+      "https://github.com/Sofia-bit-2025/smart-environment-dashboard-pv",
+    details: [
+      "Het project verwerkt gegevens van sensoren en externe databronnen.",
+      "De applicatie bestaat uit een frontend, backend en database.",
+      "Omgevingsdata wordt centraal verwerkt en weergegeven in een dashboard.",
+    ],
+  },
+  {
+    id: 3,
+    title: "Database Assignments",
+    description:
+      "Database-opdrachten uit mijn opleiding met focus op databaseontwerp en SQL.",
+    technologies: [
+      "SQL",
+      "Databaseontwerp",
+    ],
+    status: "In ontwikkeling",
+    repositoryUrl:
+      "https://github.com/Sofia-bit-2025/database-assignments",
+    details: [
+      "Repository met database-opdrachten uit mijn opleiding.",
+      "De opdrachten richten zich op het ontwerpen en werken met relationele databases.",
+      "SQL wordt gebruikt voor het werken met en bevragen van gegevens.",
     ],
   },
 ];
