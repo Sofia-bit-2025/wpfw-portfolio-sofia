@@ -13,6 +13,8 @@
 
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="assets/css/style.css" />
+
+    <script src="assets/js/blog.js" defer></script>
   </head>
 
   <body>
@@ -62,10 +64,7 @@
         <div class="container">
           <h2 id="posts-title">Publicaties</h2>
 
-          <article
-            class="card"
-            aria-labelledby="semantic-html-title"
-          >
+          <article class="card" aria-labelledby="semantic-html-title">
             <p class="eyebrow">HTML & toegankelijkheid</p>
 
             <h3 id="semantic-html-title">
@@ -79,18 +78,30 @@
               article en footer in plaats van alles met divs op te bouwen.
             </p>
 
-            <p>
-              Mijn hoofdnavigatie staat bijvoorbeeld in een nav-element en de
-              unieke inhoud van iedere pagina staat in main. Deze blogpost staat
-              in een article, omdat de tekst zelfstandig gelezen kan worden.
-            </p>
+            <div id="semantic-html-content" hidden>
+              <p>
+                Mijn hoofdnavigatie staat bijvoorbeeld in een nav-element en de
+                unieke inhoud van iedere pagina staat in main. Deze blogpost
+                staat in een article, omdat de tekst zelfstandig gelezen kan
+                worden.
+              </p>
 
-            <p>
-              Die structuur maakt mijn code duidelijker en geeft browsers en
-              ondersteunende technologie meer informatie over de opbouw van de
-              pagina. Voor mij is dat een praktische manier om vanaf het begin
-              netter en toegankelijker te bouwen.
-            </p>
+              <p>
+                Die structuur maakt mijn code duidelijker en geeft browsers en
+                ondersteunende technologie meer informatie over de opbouw van
+                de pagina. Voor mij is dat een praktische manier om vanaf het
+                begin netter en toegankelijker te bouwen.
+              </p>
+            </div>
+
+            <button
+              class="blog-toggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="semantic-html-content"
+            >
+              Lees verder
+            </button>
           </article>
         </div>
       </section>
