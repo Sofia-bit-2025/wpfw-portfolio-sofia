@@ -1,5 +1,10 @@
-const GITHUB_API_URL =
-  "https://api.github.com/repos/Sofia-bit-2025/wpfw-portfolio-sofia";
+const GITHUB_API_BASE_URL = "https://api.github.com/repos/Sofia-bit-2025";
+
+const GITHUB_REPOSITORIES = [
+  "wpfw-portfolio-sofia",
+  "smart-environment-dashboard-pv",
+  "database-assignments",
+];
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -25,20 +30,30 @@ const isValidRepository = (repository) => {
   );
 };
 
-const fetchRepository = async () => {
-  const response = await fetch(GITHUB_API_URL);
+const fetchRepository = async (repositoryName) => {
+  const response = await fetch(`${GITHUB_API_BASE_URL}/${repositoryName}`);
 
   if (!response.ok) {
-    throw new Error(`HTTP ${response.status}`);
+    throw new Error(
+      `GitHub request voor ${repositoryName} mislukt: HTTP ${response.status}`,
+    );
   }
 
   const repository = await response.json();
 
   if (!isValidRepository(repository)) {
-    throw new Error("Onverwachte GitHub API-response.");
+    throw new Error(`Onverwachte GitHub API-response voor ${repositoryName}.`);
   }
 
   return repository;
+};
+
+const fetchRepositories = async () => {
+  return Promise.all(
+    GITHUB_REPOSITORIES.map((repositoryName) =>
+      fetchRepository(repositoryName),
+    ),
+  );
 };
 
 const createRepositoryCard = (repository) => {
@@ -57,8 +72,7 @@ const createRepositoryCard = (repository) => {
 
   const description = document.createElement("p");
   description.textContent =
-    repository.description ||
-    "Geen beschrijving beschikbaar.";
+    repository.description || "Geen beschrijving beschikbaar.";
 
   const information = document.createElement("ul");
   information.className = "tag-list";
@@ -80,91 +94,60 @@ const createRepositoryCard = (repository) => {
   const updated = document.createElement("li");
 
   updated.className = "tag";
-  updated.textContent =
-    `Bijgewerkt ${formatDate(repository.updated_at)}`;
+  updated.textContent = `Bijgewerkt ${formatDate(repository.updated_at)}`;
 
   information.appendChild(updated);
 
-  article.append(
-    title,
-    description,
-    information,
-  );
+  article.append(title, description, information);
 
   listItem.appendChild(article);
 
   return listItem;
 };
 
-const renderRepository = (
-  repositoryListElement,
-  repository,
-) => {
-  repositoryListElement.replaceChildren(
-    createRepositoryCard(repository),
-  );
+const renderRepositories = (repositoryListElement, repositories) => {
+  repositoryListElement.replaceChildren();
+
+  for (const repository of repositories) {
+    repositoryListElement.appendChild(createRepositoryCard(repository));
+  }
 };
 
-const setApiStatus = (
-  statusElement,
-  message,
-  isError = false,
-) => {
+const setApiStatus = (statusElement, message, isError = false) => {
   statusElement.textContent = message;
   statusElement.hidden = message === "";
 
-  statusElement.classList.toggle(
-    "api-status--error",
-    isError,
-  );
+  statusElement.classList.toggle("api-status--error", isError);
 };
 
-const initGitHubRepository = async () => {
-  const statusElement =
-    document.querySelector("#github-status");
+const initGitHubRepositories = async () => {
+  const statusElement = document.querySelector("#github-status");
 
-  const repositoryListElement =
-    document.querySelector("#github-repositories");
+  const repositoryListElement = document.querySelector("#github-repositories");
 
-  if (
-    !statusElement ||
-    !repositoryListElement
-  ) {
+  if (!statusElement || !repositoryListElement) {
     return;
   }
 
-  setApiStatus(
-    statusElement,
-    "Repository laden...",
-  );
+  setApiStatus(statusElement, "Repositories laden...");
 
   try {
-    const repository =
-      await fetchRepository();
+    const repositories = await fetchRepositories();
 
-    renderRepository(
-      repositoryListElement,
-      repository,
-    );
+    renderRepositories(repositoryListElement, repositories);
 
-    setApiStatus(
-      statusElement,
-      "",
-    );
+    setApiStatus(statusElement, "");
   } catch (error) {
     repositoryListElement.replaceChildren();
 
     setApiStatus(
       statusElement,
-      "De repositorygegevens konden niet worden geladen. Probeer het later opnieuw.",
+      "De GitHub-gegevens konden niet worden geladen. Probeer het later opnieuw.",
       true,
     );
 
-    console.error(
-      "GitHub repository laden mislukt:",
-      error,
-    );
+    console.error("GitHub-repositories laden mislukt:", error);
   }
 };
 
-initGitHubRepository();
+initGitHubRepositories();
