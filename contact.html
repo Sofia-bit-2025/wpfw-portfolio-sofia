@@ -8,7 +8,7 @@
 
     <meta
       name="description"
-      content="Contactgegevens en contactformulier van Sofia, student Software Engineering."
+      content="Contact met Sofia via e-mail, LinkedIn of GitHub voor softwareprojecten, stages en technische mogelijkheden."
     />
 
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
@@ -18,9 +18,7 @@
   </head>
 
   <body>
-    <a class="skip-link" href="#main-content">
-      Ga naar hoofdinhoud
-    </a>
+    <a class="skip-link" href="#main-content">Ga naar hoofdinhoud</a>
 
     <header class="site-header">
       <div class="container site-header__inner">
@@ -31,27 +29,19 @@
         <nav aria-label="Hoofdnavigatie">
           <ul class="nav-list">
             <li>
-              <a href="index.html">
-                Home
-              </a>
+              <a href="index.html">Home</a>
             </li>
 
             <li>
-              <a href="projects.html">
-                Projecten
-              </a>
+              <a href="projects.html">Projecten</a>
             </li>
 
             <li>
-              <a href="blog.html">
-                Blog
-              </a>
+              <a href="blog.html">Blog</a>
             </li>
 
             <li>
-              <a href="contact.html" aria-current="page">
-                Contact
-              </a>
+              <a href="contact.html" aria-current="page">Contact</a>
             </li>
           </ul>
         </nav>
@@ -61,39 +51,34 @@
     <main id="main-content">
       <section class="page-intro" aria-labelledby="contact-title">
         <div class="container">
-          <h1 id="contact-title">
-            Contact
-          </h1>
+          <h1 id="contact-title">Contact</h1>
 
           <p class="lead">
-            Voor stages, projecten of andere professionele mogelijkheden.
+            Een vraag, interessant project of technisch idee? Je kunt me hier
+            bereiken.
           </p>
         </div>
       </section>
 
       <section class="section" aria-labelledby="contact-details-title">
         <div class="container">
-          <h2 id="contact-details-title">
-            Contactgegevens
-          </h2>
+          <h2 id="contact-details-title">Contactgegevens</h2>
+
+          <p class="section__intro">
+            Je vindt me via e-mail, LinkedIn en GitHub.
+          </p>
 
           <dl class="contact-list">
             <div class="contact-list__item">
-              <dt>
-                E-mail
-              </dt>
+              <dt>E-mail</dt>
 
               <dd>
-                <a href="mailto:sqahaei@gmail.com">
-                  sqahaei@gmail.com
-                </a>
+                <a href="mailto:sqahaei@gmail.com">sqahaei@gmail.com</a>
               </dd>
             </div>
 
             <div class="contact-list__item">
-              <dt>
-                LinkedIn
-              </dt>
+              <dt>LinkedIn</dt>
 
               <dd>
                 <a
@@ -105,14 +90,10 @@
             </div>
 
             <div class="contact-list__item">
-              <dt>
-                GitHub
-              </dt>
+              <dt>GitHub</dt>
 
               <dd>
-                <a href="https://github.com/Sofia-bit-2025">
-                  GitHub-profiel
-                </a>
+                <a href="https://github.com/Sofia-bit-2025">GitHub-profiel</a>
               </dd>
             </div>
           </dl>
@@ -124,16 +105,10 @@
         aria-labelledby="contact-form-title"
       >
         <div class="container">
-          <h2 id="contact-form-title">
-            Contactformulier
-          </h2>
+          <h2 id="contact-form-title">Probeer het formulier</h2>
 
-          <p
-            id="contact-form-description"
-            class="section__intro"
-          >
-            Het formulier controleert je invoer. De gegevens worden nog niet
-            verzonden.
+          <p id="contact-form-description" class="section__intro">
+            Een vraag of idee? Laat hieronder een bericht achter.
           </p>
 
           <form
@@ -143,12 +118,7 @@
             novalidate
           >
             <div class="form__field">
-              <label
-                class="form__label"
-                for="contact-name"
-              >
-                Naam
-              </label>
+              <label class="form__label" for="contact-name">Naam</label>
 
               <input
                 class="form__input"
@@ -162,18 +132,12 @@
                 aria-invalid="false"
               />
 
-              <p
-                id="contact-name-error"
-                class="form__error"
-              ></p>
+              <p id="contact-name-error" class="form__error" role="alert"></p>
             </div>
 
             <div class="form__field">
-              <label
-                class="form__label"
-                for="contact-email"
-              >
-                E-mail
+              <label class="form__label" for="contact-email">
+                E-mailadres
               </label>
 
               <input
@@ -187,19 +151,11 @@
                 aria-invalid="false"
               />
 
-              <p
-                id="contact-email-error"
-                class="form__error"
-              ></p>
+              <p id="contact-email-error" class="form__error" role="alert"></p>
             </div>
 
             <div class="form__field">
-              <label
-                class="form__label"
-                for="contact-message"
-              >
-                Bericht
-              </label>
+              <label class="form__label" for="contact-message">Bericht</label>
 
               <textarea
                 class="form__input"
@@ -215,27 +171,21 @@
               <p
                 id="contact-message-error"
                 class="form__error"
+                role="alert"
               ></p>
             </div>
 
-            <button
-              class="form__button"
-              type="submit"
-            >
-              Controleer invoer
+            <button class="form__button" type="submit">
+              Controleer gegevens
             </button>
 
-            <p
-              id="form-status"
-              class="form__status"
-              role="status"
-            ></p>
+            <p id="form-status" class="form__status" role="status"></p>
           </form>
 
           <noscript>
             <p class="note">
-              JavaScript is nodig om het formulier te controleren.
-              Neem anders rechtstreeks contact op via e-mail.
+              JavaScript is nodig voor de formuliercontrole. Je kunt ook
+              rechtstreeks contact opnemen via e-mail.
             </p>
           </noscript>
         </div>
@@ -244,9 +194,7 @@
 
     <footer class="site-footer">
       <div class="container site-footer__inner">
-        <p class="site-footer__text">
-          Sofia — Software Engineering
-        </p>
+        <p class="site-footer__text">Sofia — Software Engineering</p>
       </div>
     </footer>
   </body>
