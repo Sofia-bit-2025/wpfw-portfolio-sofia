@@ -31,7 +31,9 @@ const isValidRepository = (repository) => {
 };
 
 const fetchRepository = async (repositoryName) => {
-  const response = await fetch(`${GITHUB_API_BASE_URL}/${repositoryName}`);
+  const url = `${GITHUB_API_BASE_URL}/${repositoryName}`;
+
+  const response = await fetch(url);
 
   if (!response.ok) {
     throw new Error(
@@ -49,32 +51,16 @@ const fetchRepository = async (repositoryName) => {
 };
 
 const fetchRepositories = async () => {
-  return Promise.all(
-    GITHUB_REPOSITORIES.map((repositoryName) =>
-      fetchRepository(repositoryName),
-    ),
+  const requests = GITHUB_REPOSITORIES.map((repositoryName) =>
+    fetchRepository(repositoryName),
   );
+
+  return Promise.all(requests);
 };
 
-const createRepositoryCard = (repository) => {
-  const listItem = document.createElement("li");
-
-  const article = document.createElement("article");
-  article.className = "card";
-
-  const title = document.createElement("h3");
-
-  const link = document.createElement("a");
-  link.href = repository.html_url;
-  link.textContent = repository.name;
-
-  title.appendChild(link);
-
-  const description = document.createElement("p");
-  description.textContent =
-    repository.description || "Geen beschrijving beschikbaar.";
-
+const createRepositoryInformation = (repository) => {
   const information = document.createElement("ul");
+
   information.className = "tag-list";
 
   information.setAttribute(
@@ -98,6 +84,30 @@ const createRepositoryCard = (repository) => {
 
   information.appendChild(updated);
 
+  return information;
+};
+
+const createRepositoryCard = (repository) => {
+  const listItem = document.createElement("li");
+
+  const article = document.createElement("article");
+  article.className = "card";
+
+  const title = document.createElement("h3");
+
+  const link = document.createElement("a");
+  link.href = repository.html_url;
+  link.textContent = repository.name;
+
+  title.appendChild(link);
+
+  const description = document.createElement("p");
+
+  description.textContent =
+    repository.description || "Geen beschrijving beschikbaar.";
+
+  const information = createRepositoryInformation(repository);
+
   article.append(title, description, information);
 
   listItem.appendChild(article);
@@ -109,12 +119,15 @@ const renderRepositories = (repositoryListElement, repositories) => {
   repositoryListElement.replaceChildren();
 
   for (const repository of repositories) {
-    repositoryListElement.appendChild(createRepositoryCard(repository));
+    const repositoryCard = createRepositoryCard(repository);
+
+    repositoryListElement.appendChild(repositoryCard);
   }
 };
 
 const setApiStatus = (statusElement, message, isError = false) => {
   statusElement.textContent = message;
+
   statusElement.hidden = message === "";
 
   statusElement.classList.toggle("api-status--error", isError);
