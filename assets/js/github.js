@@ -1,4 +1,5 @@
-const GITHUB_API_BASE_URL = "https://api.github.com/repos/Sofia-bit-2025";
+const GITHUB_API_BASE_URL =
+  "https://api.github.com/repos/Sofia-bit-2025";
 
 const GITHUB_REPOSITORIES = [
   "wpfw-portfolio-sofia",
@@ -44,7 +45,9 @@ const fetchRepository = async (repositoryName) => {
   const repository = await response.json();
 
   if (!isValidRepository(repository)) {
-    throw new Error(`Onverwachte GitHub API-response voor ${repositoryName}.`);
+    throw new Error(
+      `Onverwachte GitHub API-response voor ${repositoryName}.`,
+    );
   }
 
   return repository;
@@ -80,7 +83,8 @@ const createRepositoryInformation = (repository) => {
   const updated = document.createElement("li");
 
   updated.className = "tag";
-  updated.textContent = `Bijgewerkt ${formatDate(repository.updated_at)}`;
+  updated.textContent =
+    `Bijgewerkt ${formatDate(repository.updated_at)}`;
 
   information.appendChild(updated);
 
@@ -104,50 +108,80 @@ const createRepositoryCard = (repository) => {
   const description = document.createElement("p");
 
   description.textContent =
-    repository.description || "Geen beschrijving beschikbaar.";
+    repository.description ||
+    "Geen beschrijving beschikbaar.";
 
-  const information = createRepositoryInformation(repository);
+  const information =
+    createRepositoryInformation(repository);
 
-  article.append(title, description, information);
+  article.append(
+    title,
+    description,
+    information,
+  );
 
   listItem.appendChild(article);
 
   return listItem;
 };
 
-const renderRepositories = (repositoryListElement, repositories) => {
+const renderRepositories = (
+  repositoryListElement,
+  repositories,
+) => {
   repositoryListElement.replaceChildren();
 
   for (const repository of repositories) {
-    const repositoryCard = createRepositoryCard(repository);
+    const repositoryCard =
+      createRepositoryCard(repository);
 
-    repositoryListElement.appendChild(repositoryCard);
+    repositoryListElement.appendChild(
+      repositoryCard,
+    );
   }
 };
 
-const setApiStatus = (statusElement, message, isError = false) => {
+const setApiStatus = (
+  statusElement,
+  message,
+  isError = false,
+) => {
   statusElement.textContent = message;
 
   statusElement.hidden = message === "";
 
-  statusElement.classList.toggle("api-status--error", isError);
+  statusElement.classList.toggle(
+    "api-status--error",
+    isError,
+  );
 };
 
 const initGitHubRepositories = async () => {
-  const statusElement = document.querySelector("#github-status");
+  const statusElement =
+    document.querySelector("#github-status");
 
-  const repositoryListElement = document.querySelector("#github-repositories");
+  const repositoryListElement =
+    document.querySelector(
+      "#github-repositories",
+    );
 
   if (!statusElement || !repositoryListElement) {
     return;
   }
 
-  setApiStatus(statusElement, "Repositories laden...");
+  setApiStatus(
+    statusElement,
+    "Repositories laden...",
+  );
 
   try {
-    const repositories = await fetchRepositories();
+    const repositories =
+      await fetchRepositories();
 
-    renderRepositories(repositoryListElement, repositories);
+    renderRepositories(
+      repositoryListElement,
+      repositories,
+    );
 
     setApiStatus(statusElement, "");
   } catch (error) {
@@ -159,7 +193,10 @@ const initGitHubRepositories = async () => {
       true,
     );
 
-    console.error("GitHub-repositories laden mislukt:", error);
+    console.error(
+      "GitHub-repositories laden mislukt:",
+      error,
+    );
   }
 };
 

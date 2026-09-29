@@ -46,7 +46,6 @@ textarea {
   color: inherit;
 }
 
-
 /* =========================================================
    DESIGN TOKENS
    ========================================================= */
@@ -83,19 +82,9 @@ textarea {
 
   /* Fonts */
   --font-body:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  --font-mono:
-    ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    Monaco,
-    Consolas,
-    monospace;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   /* Layout */
   --container-width: 72rem;
@@ -116,16 +105,13 @@ textarea {
   --radius-pill: 999px;
 
   /* Shadows */
-  --shadow-sm:
-    0 0.25rem 1rem rgba(39, 84, 130, 0.07);
+  --shadow-sm: 0 0.25rem 1rem rgba(39, 84, 130, 0.07);
 
-  --shadow-md:
-    0 0.75rem 2rem rgba(39, 84, 130, 0.1);
+  --shadow-md: 0 0.75rem 2rem rgba(39, 84, 130, 0.1);
 
   /* Controls */
   --control-min-height: 2.75rem;
 }
-
 
 /* =========================================================
    GLOBAL
@@ -150,14 +136,10 @@ main {
 }
 
 .container {
-  width: min(
-    calc(100% - 2rem),
-    var(--container-width)
-  );
+  width: min(calc(100% - 2rem), var(--container-width));
 
   margin-inline: auto;
 }
-
 
 /* =========================================================
    TYPOGRAPHY
@@ -174,21 +156,13 @@ h4 {
 }
 
 h1 {
-  font-size: clamp(
-    2.4rem,
-    7vw,
-    4rem
-  );
+  font-size: clamp(2.4rem, 7vw, 4rem);
 
   font-weight: 700;
 }
 
 h2 {
-  font-size: clamp(
-    1.6rem,
-    4vw,
-    2rem
-  );
+  font-size: clamp(1.6rem, 4vw, 2rem);
 
   font-weight: 700;
 }
@@ -247,7 +221,6 @@ a:hover {
   margin-top: var(--space-md);
 }
 
-
 /* =========================================================
    SECTIONS
    ========================================================= */
@@ -268,7 +241,6 @@ a:hover {
   color: var(--color-text-soft);
 }
 
-
 /* =========================================================
    HEADER / NAVIGATION
    ========================================================= */
@@ -278,8 +250,7 @@ a:hover {
 
   background: rgba(255, 255, 255, 0.95);
 
-  box-shadow:
-    0 0.15rem 0.8rem rgba(39, 84, 130, 0.04);
+  box-shadow: 0 0.15rem 0.8rem rgba(39, 84, 130, 0.04);
 }
 
 .site-header__inner {
@@ -360,7 +331,6 @@ a:hover {
   font-weight: 600;
 }
 
-
 /* =========================================================
    HERO
    ========================================================= */
@@ -368,12 +338,7 @@ a:hover {
 .hero {
   padding-block: var(--space-xl);
 
-  background:
-    linear-gradient(
-      135deg,
-      #eef6ff 0%,
-      #f0fbfb 100%
-    );
+  background: linear-gradient(135deg, #eef6ff 0%, #f0fbfb 100%);
 }
 
 .hero__inner {
@@ -481,7 +446,6 @@ a:hover {
   box-shadow: var(--shadow-md);
 }
 
-
 /* =========================================================
    HOME TECHNICAL FOCUS
 
@@ -501,7 +465,6 @@ a:hover {
   padding-block: var(--space-xl);
 }
 
-
 /* =========================================================
    PAGE INTRO
    ========================================================= */
@@ -513,7 +476,6 @@ a:hover {
 .page-intro .lead {
   margin-top: var(--space-md);
 }
-
 
 /* =========================================================
    TAGS
@@ -542,7 +504,6 @@ a:hover {
   font-weight: 500;
 }
 
-
 /* =========================================================
    CARDS
    ========================================================= */
@@ -550,14 +511,7 @@ a:hover {
 .card-grid {
   display: grid;
 
-  grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(
-        min(100%, 20rem),
-        1fr
-      )
-    );
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
 
   gap: 1.25rem;
 
@@ -629,7 +583,6 @@ a:hover {
   margin-top: var(--space-md);
 }
 
-
 /* =========================================================
    CARD ACTION AREA
 
@@ -652,7 +605,6 @@ a:hover {
 .card__actions > div {
   width: 100%;
 }
-
 
 /* =========================================================
    CARD ACTIONS
@@ -712,7 +664,6 @@ a:hover {
   color: #ffffff;
 }
 
-
 /* =========================================================
    PROJECT DETAILS
    ========================================================= */
@@ -769,7 +720,6 @@ a:hover {
   letter-spacing: 0.06em;
 }
 
-
 /* =========================================================
    PROJECTS PAGE
    ========================================================= */
@@ -816,7 +766,6 @@ a:hover {
   margin-top: var(--space-md);
 }
 
-
 /* =========================================================
    CONTACT LIST
    ========================================================= */
@@ -824,14 +773,7 @@ a:hover {
 .contact-list {
   display: grid;
 
-  grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(
-        min(100%, 13rem),
-        1fr
-      )
-    );
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
 
   gap: var(--space-md);
 
@@ -884,7 +826,6 @@ a:hover {
   text-decoration: underline;
 }
 
-
 /* =========================================================
    FORM
    ========================================================= */
@@ -894,11 +835,7 @@ a:hover {
 
   margin-top: var(--space-lg);
 
-  padding: clamp(
-    1.25rem,
-    4vw,
-    2rem
-  );
+  padding: clamp(1.25rem, 4vw, 2rem);
 
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
@@ -949,8 +886,7 @@ a:hover {
 
   background: var(--color-card);
 
-  box-shadow:
-    0 0 0 0.2rem rgba(11, 99, 246, 0.1);
+  box-shadow: 0 0 0 0.2rem rgba(11, 99, 246, 0.1);
 }
 
 .form__input::placeholder {
@@ -1019,7 +955,6 @@ textarea.form__input {
   transform: translateY(-1px);
 }
 
-
 /* =========================================================
    FORM STATUS
    ========================================================= */
@@ -1039,21 +974,18 @@ textarea.form__input {
 }
 
 .form__status--success {
-  border-inline-start:
-    3px solid var(--color-success);
+  border-inline-start: 3px solid var(--color-success);
 
   background: var(--color-success-surface);
   color: var(--color-success);
 }
 
 .form__status--error {
-  border-inline-start:
-    3px solid var(--color-error);
+  border-inline-start: 3px solid var(--color-error);
 
   background: var(--color-error-surface);
   color: var(--color-error);
 }
-
 
 /* =========================================================
    API STATUS
@@ -1079,7 +1011,6 @@ textarea.form__input {
   background: var(--color-error-surface);
   color: var(--color-error);
 }
-
 
 /* =========================================================
    FOOTER
@@ -1108,7 +1039,6 @@ textarea.form__input {
 
   font-size: 0.9rem;
 }
-
 
 /* =========================================================
    ACCESSIBILITY
@@ -1146,7 +1076,6 @@ textarea.form__input {
   outline: 3px solid var(--color-accent);
   outline-offset: 3px;
 }
-
 
 /* =========================================================
    DESKTOP
@@ -1208,7 +1137,6 @@ textarea.form__input {
     justify-content: flex-start;
   }
 }
-
 
 /* =========================================================
    REDUCED MOTION
