@@ -1,0 +1,7 @@
+
+@baseUrl = http://localhost:5180
+@projectId = 1
+@blogpostId = 1
+
+POST {{baseUrl}}/api/projects
+Content-Type: application/json
