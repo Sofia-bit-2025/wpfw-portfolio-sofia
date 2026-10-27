@@ -90,3 +90,20 @@ public sealed class ProjectService : IProjectService
         await _dbContext.SaveChangesAsync(cancellationToken);
         return true;
     }
+
+    private static ProjectResponse ToResponse(Project project) => new(
+        project.Id,
+        project.Titel,
+        project.Beschrijving,
+        project.Categorie,
+        project.GitHubUrl,
+        project.Datum,
+        project.Status,
+        project.Technologieen.ToList(),
+        project.TechnischeDetails.ToList());
+
+    private static List<string> CleanList(List<string>? values) =>
+        values?.Where(value => !string.IsNullOrWhiteSpace(value))
+               .Select(value => value.Trim())
+               .ToList() ?? [];
+}
