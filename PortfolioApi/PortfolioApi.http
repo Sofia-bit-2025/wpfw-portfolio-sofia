@@ -5,3 +5,27 @@
 
 POST {{baseUrl}}/api/projects
 Content-Type: application/json
+
+{
+  "titel": "WPFW portfolio",
+  "beschrijving": "Portfolio gebouwd met HTML, CSS en JavaScript voor mijn WPFW-opdrachten.",
+  "categorie": "Webontwikkeling",
+  "gitHubUrl": "https://github.com/Sofia-bit-2025/wpfw-portfolio-sofia",
+  "datum": "2026-10-27",
+  "status": "In ontwikkeling",
+  "technologieen": ["HTML5", "CSS", "JavaScript"],
+  "technischeDetails": ["Projectgegevens worden via een API geladen."]
+}
+
+
+
+{
+  "titel": "WPFW portfolio",
+  "beschrijving": "Portfolio gebouwd met HTML, CSS en JavaScript voor mijn WPFW-opdrachten.",
+  "categorie": "Webontwikkeling",
+  "gitHubUrl": "https://github.com/Sofia-bit-2025/wpfw-portfolio-sofia",
+  "datum": "2026-10-27",
+  "status": "In ontwikkeling",
+  "technologieen": ["HTML5", "CSS", "JavaScript"],
+  "technischeDetails": ["Projectgegevens worden via een API geladen."]
+}
