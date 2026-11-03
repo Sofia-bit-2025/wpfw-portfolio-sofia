@@ -1,8 +1,9 @@
 
 @baseUrl = http://localhost:5180
-@projectId = 1
-@blogpostId = 1
 
+###
+
+# @name createPortfolio
 POST {{baseUrl}}/api/projects
 Content-Type: application/json
 
@@ -17,15 +18,185 @@ Content-Type: application/json
   "technischeDetails": ["Projectgegevens worden via een API geladen."]
 }
 
+###
 
+# @name createDashboard
+POST {{baseUrl}}/api/projects
+Content-Type: application/json
 
 {
-  "titel": "WPFW portfolio",
-  "beschrijving": "Portfolio gebouwd met HTML, CSS en JavaScript voor mijn WPFW-opdrachten.",
+  "titel": "Smart Environment Dashboard",
+  "beschrijving": "Softwareproject voor het verzamelen, verwerken en weergeven van omgevingsdata.",
+  "categorie": "Softwareontwikkeling",
+  "gitHubUrl": "https://github.com/Sofia-bit-2025/smart-environment-dashboard-pv",
+  "datum": "2026-10-27",
+  "status": "In ontwikkeling",
+  "technologieen": ["C#", "ASP.NET Core", "JavaScript", "SQL", "REST API"],
+  "technischeDetails": [
+    "Het project verwerkt gegevens van sensoren en externe databronnen.",
+    "De applicatie bestaat uit een frontend, backend en database.",
+    "Omgevingsdata wordt centraal verwerkt en weergegeven in een dashboard."
+  ]
+}
+
+###
+
+# @name createDatabaseProject
+POST {{baseUrl}}/api/projects
+Content-Type: application/json
+
+{
+  "titel": "Database Assignments",
+  "beschrijving": "Database-opdrachten uit mijn opleiding met focus op databaseontwerp en SQL.",
+  "categorie": "Databaseontwerp",
+  "gitHubUrl": "https://github.com/Sofia-bit-2025/database-assignments",
+  "datum": "2026-10-27",
+  "status": "In ontwikkeling",
+  "technologieen": ["SQL", "Databaseontwerp"],
+  "technischeDetails": [
+    "Repository met database-opdrachten uit mijn opleiding.",
+    "De opdrachten richten zich op het ontwerpen en werken met relationele databases.",
+    "SQL wordt gebruikt voor het werken met en bevragen van gegevens."
+  ]
+}
+
+###
+
+GET {{baseUrl}}/api/projects
+
+###
+
+GET {{baseUrl}}/api/projects/{{createPortfolio.response.body.$.id}}
+
+###
+
+GET {{baseUrl}}/api/projects/{{createDashboard.response.body.$.id}}
+
+###
+
+GET {{baseUrl}}/api/projects/{{createDatabaseProject.response.body.$.id}}
+
+###
+
+PUT {{baseUrl}}/api/projects/{{createPortfolio.response.body.$.id}}
+Content-Type: application/json
+
+{
+  "titel": "WPFW portfolio bijgewerkt",
+  "beschrijving": "Portfolio met ASP.NET Core Web API en SQL Server als backend.",
   "categorie": "Webontwikkeling",
   "gitHubUrl": "https://github.com/Sofia-bit-2025/wpfw-portfolio-sofia",
   "datum": "2026-10-27",
   "status": "In ontwikkeling",
-  "technologieen": ["HTML5", "CSS", "JavaScript"],
-  "technischeDetails": ["Projectgegevens worden via een API geladen."]
+  "technologieen": ["HTML5", "CSS", "JavaScript", "C#", ".NET 10"],
+  "technischeDetails": ["De API gebruikt controllers en services."]
 }
+
+###
+
+GET {{baseUrl}}/api/projects/{{createPortfolio.response.body.$.id}}
+
+###
+
+POST {{baseUrl}}/api/projects
+Content-Type: application/json
+
+{
+  "titel": " A ",
+  "beschrijving": "Dit project test de invoervalidatie.",
+  "categorie": "Webontwikkeling",
+  "gitHubUrl": "https://github.com/Sofia-bit-2025/wpfw-portfolio-sofia",
+  "datum": "2026-10-27",
+  "status": "In ontwikkeling",
+  "technologieen": [],
+  "technischeDetails": []
+}
+
+###
+
+POST {{baseUrl}}/api/projects
+Content-Type: application/json
+
+{
+  "titel": "Project met ongeldige datum",
+  "beschrijving": "Dit project test een ontbrekende datum.",
+  "categorie": "Webontwikkeling",
+  "gitHubUrl": "https://github.com/Sofia-bit-2025/wpfw-portfolio-sofia",
+  "datum": null,
+  "status": "In ontwikkeling",
+  "technologieen": [],
+  "technischeDetails": []
+}
+
+###
+
+# @name createBlogpost
+POST {{baseUrl}}/api/blogposts
+Content-Type: application/json
+
+{
+  "titel": "Semantische HTML: structuur met betekenis",
+  "inhoud": "Goede HTML beschrijft de betekenis van content.\n\nIk gebruik header, nav, main, section en article om mijn portfolio logisch op te bouwen.",
+  "publicatiedatum": "2026-10-27"
+}
+
+###
+
+GET {{baseUrl}}/api/blogposts
+
+###
+
+GET {{baseUrl}}/api/blogposts/{{createBlogpost.response.body.$.id}}
+
+###
+
+PUT {{baseUrl}}/api/blogposts/{{createBlogpost.response.body.$.id}}
+Content-Type: application/json
+
+{
+  "titel": "Semantische HTML bijgewerkt",
+  "inhoud": "De HTML-elementen tonen welke functie de inhoud heeft.\n\nDe structuur helpt mensen en ondersteunende technologie.",
+  "publicatiedatum": "2026-10-27"
+}
+
+###
+
+GET {{baseUrl}}/api/blogposts/{{createBlogpost.response.body.$.id}}
+
+###
+
+POST {{baseUrl}}/api/blogposts
+Content-Type: application/json
+
+{
+  "titel": " A ",
+  "inhoud": "Dit is een test om ongeldige invoer te controleren.",
+  "publicatiedatum": "2026-10-27"
+}
+
+###
+
+POST {{baseUrl}}/api/blogposts
+Content-Type: application/json
+
+{
+  "titel": "Test zonder publicatiedatum",
+  "inhoud": "Dit is een test om de verplichte publicatiedatum te controleren.",
+  "publicatiedatum": null
+}
+
+###
+
+DELETE {{baseUrl}}/api/blogposts/{{createBlogpost.response.body.$.id}}
+
+###
+
+GET {{baseUrl}}/api/blogposts/{{createBlogpost.response.body.$.id}}
+
+###
+
+DELETE {{baseUrl}}/api/projects/{{createPortfolio.response.body.$.id}}
+
+###
+
+GET {{baseUrl}}/api/projects/{{createPortfolio.response.body.$.id}}
