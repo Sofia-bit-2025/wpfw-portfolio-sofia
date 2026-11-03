@@ -10,7 +10,7 @@ var connectionString = builder.Configuration.GetConnectionString("PortfolioDatab
 if (string.IsNullOrWhiteSpace(connectionString))
 {
     throw new InvalidOperationException(
-        "Configureer ConnectionStrings->PortfolioDatabase via user secrets / een andere veilige configuratiebron.");
+        "Configureer ConnectionStrings:PortfolioDatabase via user secrets of een andere veilige configuratiebron.");
 }
 
 builder.Services.AddControllers();
@@ -39,11 +39,17 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.UseCors("LocalFrontend");
 }
 else
 {
     app.UseExceptionHandler();
+}
+
+app.UseRouting();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseCors("LocalFrontend");
 }
 
 app.MapControllers();
