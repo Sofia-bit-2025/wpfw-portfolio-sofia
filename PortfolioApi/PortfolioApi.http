@@ -130,6 +130,127 @@ Content-Type: application/json
 
 ###
 
+POST {{baseUrl}}/api/projects
+Content-Type: application/json
+
+{
+  "titel": "Project met ongeldige status",
+  "beschrijving": "Dit project test een status van een teken.",
+  "categorie": "Webontwikkeling",
+  "gitHubUrl": "https://github.com/Sofia-bit-2025/wpfw-portfolio-sofia",
+  "datum": "2026-10-27",
+  "status": "A",
+  "technologieen": [],
+  "technischeDetails": []
+}
+
+###
+
+POST {{baseUrl}}/api/projects
+Content-Type: application/json
+
+{
+  "titel": "Project met lege status",
+  "beschrijving": "Dit project test een status met alleen spaties.",
+  "categorie": "Webontwikkeling",
+  "gitHubUrl": "https://github.com/Sofia-bit-2025/wpfw-portfolio-sofia",
+  "datum": "2026-10-27",
+  "status": "   ",
+  "technologieen": [],
+  "technischeDetails": []
+}
+
+###
+
+PUT {{baseUrl}}/api/projects/{{createPortfolio.response.body.$.id}}
+Content-Type: application/json
+
+{
+  "titel": "WPFW portfolio",
+  "beschrijving": "Controle van de statusvalidatie bij het wijzigen van een project.",
+  "categorie": "Webontwikkeling",
+  "gitHubUrl": "https://github.com/Sofia-bit-2025/wpfw-portfolio-sofia",
+  "datum": "2026-10-27",
+  "status": "A",
+  "technologieen": [],
+  "technischeDetails": []
+}
+
+###
+
+GET {{baseUrl}}/api/projects/{{createPortfolio.response.body.$.id}}
+
+###
+
+# @name createListTest
+POST {{baseUrl}}/api/projects
+Content-Type: application/json
+
+{
+  "titel": "Test verwerking projectlijsten",
+  "beschrijving": "Controle van spaties en lege items in de projectlijsten.",
+  "categorie": "Webontwikkeling",
+  "gitHubUrl": "https://github.com/Sofia-bit-2025/wpfw-portfolio-sofia",
+  "datum": "2026-10-27",
+  "status": "In ontwikkeling",
+  "technologieen": [" C# ", "", " SQL ", "   "],
+  "technischeDetails": [
+    " API met controllers ",
+    "",
+    " Entity Framework Core "
+  ]
+}
+
+###
+
+GET {{baseUrl}}/api/projects/{{createListTest.response.body.$.id}}
+
+###
+
+PUT {{baseUrl}}/api/projects/{{createListTest.response.body.$.id}}
+Content-Type: application/json
+
+{
+  "titel": "Test verwerking projectlijsten",
+  "beschrijving": "Controle van gewijzigde lijsten bij het bijwerken.",
+  "categorie": "Webontwikkeling",
+  "gitHubUrl": "https://github.com/Sofia-bit-2025/wpfw-portfolio-sofia",
+  "datum": "2026-10-27",
+  "status": "In ontwikkeling",
+  "technologieen": [" JavaScript ", " ASP.NET Core ", ""],
+  "technischeDetails": [" SQL Server ", "   ", " DTO mapping "]
+}
+
+###
+
+GET {{baseUrl}}/api/projects/{{createListTest.response.body.$.id}}
+
+###
+
+GET {{baseUrl}}/api/projects/999999
+
+###
+
+PUT {{baseUrl}}/api/projects/999999
+Content-Type: application/json
+
+{
+  "titel": "Niet bestaand project",
+  "beschrijving": "Controle van een onbekend project-ID.",
+  "categorie": "Test",
+  "gitHubUrl": "https://github.com/Sofia-bit-2025/wpfw-portfolio-sofia",
+  "datum": "2026-10-27",
+  "status": "In ontwikkeling",
+  "technologieen": [],
+  "technischeDetails": []
+}
+
+###
+
+DELETE {{baseUrl}}/api/projects/999999
+
+###
+
 # @name createBlogpost
 POST {{baseUrl}}/api/blogposts
 Content-Type: application/json
@@ -187,11 +308,80 @@ Content-Type: application/json
 
 ###
 
+POST {{baseUrl}}/api/blogposts
+Content-Type: application/json
+
+{
+  "titel": "Test met korte inhoud",
+  "inhoud": " Kort ",
+  "publicatiedatum": "2026-10-27"
+}
+
+###
+
+PUT {{baseUrl}}/api/blogposts/{{createBlogpost.response.body.$.id}}
+Content-Type: application/json
+
+{
+  "titel": " A ",
+  "inhoud": "Deze blogpost controleert ongeldige invoer bij een update.",
+  "publicatiedatum": "2026-10-27"
+}
+
+###
+
+GET {{baseUrl}}/api/blogposts/{{createBlogpost.response.body.$.id}}
+
+###
+
+GET {{baseUrl}}/api/blogposts/999999
+
+###
+
+PUT {{baseUrl}}/api/blogposts/999999
+Content-Type: application/json
+
+{
+  "titel": "Niet bestaande blogpost",
+  "inhoud": "Deze test controleert het wijzigen van een onbekende blogpost.",
+  "publicatiedatum": "2026-10-27"
+}
+
+###
+
+DELETE {{baseUrl}}/api/blogposts/999999
+
+###
+
+GET {{baseUrl}}/api/projects/{{createDashboard.response.body.$.id}}
+
+###
+
+GET {{baseUrl}}/api/projects/{{createDatabaseProject.response.body.$.id}}
+
+###
+
+GET {{baseUrl}}/api/projects/{{createListTest.response.body.$.id}}
+
+###
+
+GET {{baseUrl}}/api/blogposts/{{createBlogpost.response.body.$.id}}
+
+###
+
 DELETE {{baseUrl}}/api/blogposts/{{createBlogpost.response.body.$.id}}
 
 ###
 
 GET {{baseUrl}}/api/blogposts/{{createBlogpost.response.body.$.id}}
+
+###
+
+DELETE {{baseUrl}}/api/projects/{{createListTest.response.body.$.id}}
+
+###
+
+GET {{baseUrl}}/api/projects/{{createListTest.response.body.$.id}}
 
 ###
 
