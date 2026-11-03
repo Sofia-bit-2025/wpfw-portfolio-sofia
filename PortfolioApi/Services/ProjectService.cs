@@ -1,3 +1,4 @@
+
 using Microsoft.EntityFrameworkCore;
 using PortfolioApi.Data;
 using PortfolioApi.DTOs;
@@ -14,10 +15,11 @@ public sealed class ProjectService : IProjectService
         _dbContext = dbContext;
     }
 
-
-    public async Task<IReadOnlyList<ProjectResponse>> GetAllAsync(CancellationToken cancellationToken)
+    public async Task<IReadOnlyList<ProjectResponse>> GetAllAsync(
+        CancellationToken cancellationToken)
     {
-        var projects = await _dbContext.Projects.AsNoTracking()
+        var projects = await _dbContext.Projects
+            .AsNoTracking()
             .OrderByDescending(project => project.Datum)
             .ThenBy(project => project.Id)
             .ToListAsync(cancellationToken);
@@ -25,15 +27,22 @@ public sealed class ProjectService : IProjectService
         return projects.Select(ToResponse).ToList();
     }
 
-    public async Task<ProjectResponse?> GetByIdAsync(int id, CancellationToken cancellationToken)
+    public async Task<ProjectResponse?> GetByIdAsync(
+        int id,
+        CancellationToken cancellationToken)
     {
-        var project = await _dbContext.Projects.AsNoTracking()
-            .FirstOrDefaultAsync(project => project.Id == id, cancellationToken);
+        var project = await _dbContext.Projects
+            .AsNoTracking()
+            .FirstOrDefaultAsync(
+                project => project.Id == id,
+                cancellationToken);
 
         return project is null ? null : ToResponse(project);
     }
 
-     public async Task<ProjectResponse> CreateAsync(CreateProjectRequest request, CancellationToken cancellationToken)
+    public async Task<ProjectResponse> CreateAsync(
+        CreateProjectRequest request,
+        CancellationToken cancellationToken)
     {
         var project = new Project
         {
@@ -48,15 +57,21 @@ public sealed class ProjectService : IProjectService
         };
 
         _dbContext.Projects.Add(project);
+
         await _dbContext.SaveChangesAsync(cancellationToken);
+
         return ToResponse(project);
     }
 
-
-    public async Task<bool> UpdateAsync(int id, UpdateProjectRequest request, CancellationToken cancellationToken)
+    public async Task<bool> UpdateAsync(
+        int id,
+        UpdateProjectRequest request,
+        CancellationToken cancellationToken)
     {
-        var project = await _dbContext.Projects.FirstOrDefaultAsync(
-            project => project.Id == id, cancellationToken);
+        var project = await _dbContext.Projects
+            .FirstOrDefaultAsync(
+                project => project.Id == id,
+                cancellationToken);
 
         if (project is null)
         {
@@ -73,13 +88,18 @@ public sealed class ProjectService : IProjectService
         project.TechnischeDetails = CleanList(request.TechnischeDetails);
 
         await _dbContext.SaveChangesAsync(cancellationToken);
+
         return true;
     }
 
-    public async Task<bool> DeleteAsync(int id, CancellationToken cancellationToken)
+    public async Task<bool> DeleteAsync(
+        int id,
+        CancellationToken cancellationToken)
     {
-        var project = await _dbContext.Projects.FirstOrDefaultAsync(
-            project => project.Id == id, cancellationToken);
+        var project = await _dbContext.Projects
+            .FirstOrDefaultAsync(
+                project => project.Id == id,
+                cancellationToken);
 
         if (project is null)
         {
@@ -87,7 +107,9 @@ public sealed class ProjectService : IProjectService
         }
 
         _dbContext.Projects.Remove(project);
+
         await _dbContext.SaveChangesAsync(cancellationToken);
+
         return true;
     }
 
@@ -103,7 +125,8 @@ public sealed class ProjectService : IProjectService
         project.TechnischeDetails.ToList());
 
     private static List<string> CleanList(List<string>? values) =>
-        values?.Where(value => !string.IsNullOrWhiteSpace(value))
-               .Select(value => value.Trim())
-               .ToList() ?? [];
+        values?
+            .Where(value => !string.IsNullOrWhiteSpace(value))
+            .Select(value => value.Trim())
+            .ToList() ?? [];
 }
