@@ -1,3 +1,4 @@
+
 using Microsoft.EntityFrameworkCore;
 using PortfolioApi.Data;
 using PortfolioApi.DTOs;
@@ -14,9 +15,11 @@ public sealed class BlogpostService : IBlogpostService
         _dbContext = dbContext;
     }
 
-    public async Task<IReadOnlyList<BlogpostResponse>> GetAllAsync(CancellationToken cancellationToken)
+    public async Task<IReadOnlyList<BlogpostResponse>> GetAllAsync(
+        CancellationToken cancellationToken)
     {
-        var blogposts = await _dbContext.Blogposts.AsNoTracking()
+        var blogposts = await _dbContext.Blogposts
+            .AsNoTracking()
             .OrderByDescending(blogpost => blogpost.Publicatiedatum)
             .ThenBy(blogpost => blogpost.Id)
             .ToListAsync(cancellationToken);
@@ -24,15 +27,22 @@ public sealed class BlogpostService : IBlogpostService
         return blogposts.Select(ToResponse).ToList();
     }
 
-    public async Task<BlogpostResponse?> GetByIdAsync(int id, CancellationToken cancellationToken)
+    public async Task<BlogpostResponse?> GetByIdAsync(
+        int id,
+        CancellationToken cancellationToken)
     {
-        var blogpost = await _dbContext.Blogposts.AsNoTracking()
-            .FirstOrDefaultAsync(blogpost => blogpost.Id == id, cancellationToken);
+        var blogpost = await _dbContext.Blogposts
+            .AsNoTracking()
+            .FirstOrDefaultAsync(
+                blogpost => blogpost.Id == id,
+                cancellationToken);
 
         return blogpost is null ? null : ToResponse(blogpost);
     }
 
-    public async Task<BlogpostResponse> CreateAsync(CreateBlogpostRequest request, CancellationToken cancellationToken)
+    public async Task<BlogpostResponse> CreateAsync(
+        CreateBlogpostRequest request,
+        CancellationToken cancellationToken)
     {
         var blogpost = new Blogpost
         {
@@ -42,14 +52,21 @@ public sealed class BlogpostService : IBlogpostService
         };
 
         _dbContext.Blogposts.Add(blogpost);
+
         await _dbContext.SaveChangesAsync(cancellationToken);
+
         return ToResponse(blogpost);
     }
 
-    public async Task<bool> UpdateAsync(int id, UpdateBlogpostRequest request, CancellationToken cancellationToken)
+    public async Task<bool> UpdateAsync(
+        int id,
+        UpdateBlogpostRequest request,
+        CancellationToken cancellationToken)
     {
-        var blogpost = await _dbContext.Blogposts.FirstOrDefaultAsync(
-            blogpost => blogpost.Id == id, cancellationToken);
+        var blogpost = await _dbContext.Blogposts
+            .FirstOrDefaultAsync(
+                blogpost => blogpost.Id == id,
+                cancellationToken);
 
         if (blogpost is null)
         {
@@ -61,14 +78,18 @@ public sealed class BlogpostService : IBlogpostService
         blogpost.Publicatiedatum = request.Publicatiedatum!.Value;
 
         await _dbContext.SaveChangesAsync(cancellationToken);
+
         return true;
     }
 
-
-public async Task<bool> DeleteAsync(int id, CancellationToken cancellationToken)
+    public async Task<bool> DeleteAsync(
+        int id,
+        CancellationToken cancellationToken)
     {
-        var blogpost = await _dbContext.Blogposts.FirstOrDefaultAsync(
-            blogpost => blogpost.Id == id, cancellationToken);
+        var blogpost = await _dbContext.Blogposts
+            .FirstOrDefaultAsync(
+                blogpost => blogpost.Id == id,
+                cancellationToken);
 
         if (blogpost is null)
         {
@@ -76,7 +97,9 @@ public async Task<bool> DeleteAsync(int id, CancellationToken cancellationToken)
         }
 
         _dbContext.Blogposts.Remove(blogpost);
+
         await _dbContext.SaveChangesAsync(cancellationToken);
+
         return true;
     }
 
