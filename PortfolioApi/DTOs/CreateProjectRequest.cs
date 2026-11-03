@@ -60,6 +60,14 @@ public sealed class CreateProjectRequest : IValidatableObject
                 [nameof(Categorie)]);
         }
 
+        if (!string.IsNullOrWhiteSpace(Status) &&
+            Status.Trim().Length < 2)
+        {
+            yield return new ValidationResult(
+                "Status moet minimaal 2 tekens bevatten na het verwijderen van spaties.",
+                [nameof(Status)]);
+        }
+
         if (Datum == DateOnly.MinValue)
         {
             yield return new ValidationResult(
