@@ -106,4 +106,4 @@ Ik test de endpoints via Swagger in deze volgorde:
 
 Mijn code en commitgeschiedenis staan op:
 
-https://github.com/Sofia-bit-2025/wpfw-portfolio-sofia
+https://github.com/Sofia-bit-2025/wpfw-portfolio-sofia.git
