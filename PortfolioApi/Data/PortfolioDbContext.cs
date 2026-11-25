@@ -1,13 +1,17 @@
-
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PortfolioApi.Models;
 
 namespace PortfolioApi.Data;
 
-public sealed class PortfolioDbContext : DbContext
+//het erft nu van identityUser ipv DbContext.
+public sealed class PortfolioDbContext
+    : IdentityDbContext<IdentityUser>
 {
     public PortfolioDbContext(
-        DbContextOptions<PortfolioDbContext> options) : base(options)
+        DbContextOptions<PortfolioDbContext> options)
+        : base(options)
     {
     }
 
@@ -17,6 +21,9 @@ public sealed class PortfolioDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        //standaard db-configuratie EF Core Identity.
+        base.OnModelCreating(modelBuilder);
+
         modelBuilder.Entity<Project>(entity =>
         {
             entity.HasKey(project => project.Id);
