@@ -1,4 +1,4 @@
-
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PortfolioApi.DTOs;
@@ -18,7 +18,9 @@ public sealed class BlogpostsController : ControllerBase
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(IReadOnlyList<BlogpostResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(
+        typeof(IReadOnlyList<BlogpostResponse>),
+        StatusCodes.Status200OK)]
     public async Task<ActionResult<IReadOnlyList<BlogpostResponse>>> GetAll(
         CancellationToken cancellationToken)
     {
@@ -28,7 +30,9 @@ public sealed class BlogpostsController : ControllerBase
     }
 
     [HttpGet("{id:int}")]
-    [ProducesResponseType(typeof(BlogpostResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(
+        typeof(BlogpostResponse),
+        StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<BlogpostResponse>> GetById(
         int id,
@@ -42,7 +46,10 @@ public sealed class BlogpostsController : ControllerBase
     }
 
     [HttpPost]
-    [ProducesResponseType(typeof(BlogpostResponse), StatusCodes.Status201Created)]
+    [Authorize(Roles = "Editor,Admin")]
+    [ProducesResponseType(
+        typeof(BlogpostResponse),
+        StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<BlogpostResponse>> Create(
         [FromBody] CreateBlogpostRequest request,
@@ -59,6 +66,7 @@ public sealed class BlogpostsController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
+    [Authorize(Roles = "Editor,Admin")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -76,6 +84,7 @@ public sealed class BlogpostsController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
+    [Authorize(Roles = "Editor,Admin")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Delete(
