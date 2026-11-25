@@ -1,4 +1,3 @@
-using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -41,15 +40,12 @@ public sealed class AuthController : ControllerBase
 
         if (!createResult.Succeeded)
         {
-            var errors = createResult.Errors
-                .GroupBy(error => error.Code)
-                .ToDictionary(
-                    group => group.Key,
-                    group => group
-                        .Select(error => error.Description)
-                        .ToArray());
+            foreach (var error in createResult.Errors)
+            {
+                ModelState.AddModelError(error.Code, error.Description);
+            }
 
-            return ValidationProblem(errors);
+            return ValidationProblem(ModelState);
         }
 
         var roleResult = await _userManager.AddToRoleAsync(
